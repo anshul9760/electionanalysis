@@ -65,7 +65,7 @@ def captcha():
     driver.switch_to.window(windows[0])
     driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL + 's')
     time.sleep(10)
-    if os.path.isfile("W:\\Zenkast\\ViewPDF.aspx") is False:
+    if os.path.isfile("W:\\Zenk\\ViewPDF.aspx") is False:
         time.sleep(3)
         refresh = driver.find_element_by_id("uu")
         refresh.click()
@@ -78,15 +78,15 @@ def captcha():
         captcha()
     else:
         time.sleep(10)
-        shutil.move('W:\\Zenkast\\ViewPDF.aspx','W:\\Zenkast\\'+i+'\\'+j+'\\ViewPDF.aspx')
-        os.rename('W:\\Zenkast\\'+i+'\\'+j+'\\ViewPDF.aspx','W:\\Zenkast\\'+i+'\\'+j+'\\'+partlk[k].text+'.pdf')
+        shutil.move('W:\\Zenk\\ViewPDF.aspx','W:\\Zenk\\'+i+'\\'+j+'\\ViewPDF.aspx')
+        os.rename('W:\\Zenk\\'+i+'\\'+j+'\\ViewPDF.aspx','W:\\Zenk\\'+i+'\\'+j+'\\'+partlk[k].text+'.pdf')
         print("File ",partlk[k].text,' saved successfully')
 		
 		
 		
 		
 for i in listofdistricts:
-    if os.path.isdir("W:\\Zenkast\\"+i) is False : os.mkdir("W:\\Zenkast\\"+i)
+    if os.path.isdir("W:\\Zenk\\"+i) is False : os.mkdir("W:\\Zenk\\"+i)
     select = Select(driver.find_element_by_name("ctl00$Content$DistrictList"))
     select.select_by_visible_text(i)
     page = driver.page_source
@@ -106,7 +106,7 @@ for i in listofdistricts:
         pt=pagesource2.find_all('select', {"name": "ctl00$Content$PartList"})
         partlk=pt[0].find_all('option')
         tp=[]
-        if os.path.isdir("W:\\Zenkast\\"+i+"\\"+j) is False : os.mkdir("W:\\Zenkast\\"+i+"\\"+j)
+        if os.path.isdir("W:\\Zenk\\"+i+"\\"+j) is False : os.mkdir("W:\\Zenk\\"+i+"\\"+j)
         for k in range(1,len(partlk)):
             select = Select(driver.find_element_by_name("ctl00$Content$PartList"))
             select.select_by_visible_text(partlk[k].text)
